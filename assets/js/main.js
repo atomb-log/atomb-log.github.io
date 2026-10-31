@@ -148,7 +148,7 @@
     });
     let visible = 0;
     $$('.post-item').forEach(post => { post.hidden = tag !== '' && !JSON.parse(post.dataset.tags).includes(tag); if (!post.hidden) visible++; });
-    $('.filter-empty').hidden = visible > 0;
+    $('.filter-empty').hidden = visible > 0 || tag === '';
     if (updateUrl) {
       const url = new URL(location.href);
       url.searchParams.delete('category');

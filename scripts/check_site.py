@@ -77,8 +77,9 @@ for file in pages:
             errors.append(f"{relative}: missing local link target: {link}")
 
 posts = json.loads((root / "search.json").read_text(encoding="utf-8"))
-if not posts:
-    errors.append("Search index has no posts")
+if not isinstance(posts, list):
+    errors.append("Search index must be an array")
+    posts = []
 for post in posts:
     for key in ("title", "url", "date", "categories", "tags", "content"):
         if key not in post:
