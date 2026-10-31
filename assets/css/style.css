@@ -1544,17 +1544,20 @@ main:focus {
 .toc nav a.depth-3 {
   position:relative;
   margin-left:4px;
-  border-left:2px solid var(--accent);
-  padding-left:10px
+  padding-left:12px
 }
-.toc nav a.depth-3 + a.depth-3::before {
+.toc nav a.depth-3::before {
   content:"";
   position:absolute;
-  left:-2px;
-  top:-10px;
-  height:10px;
-  border-left:2px solid var(--accent);
+  left:0;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:var(--accent);
   pointer-events:none
+}
+.toc nav a.depth-3 + a.depth-3::before {
+  top:-10px
 }
 .toc nav a:hover,.toc nav a.active {
   color:var(--accent)
