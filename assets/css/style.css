@@ -1197,7 +1197,7 @@ main:focus {
   font-size:15px;
   font-weight:600;
   color:var(--accent);
-  margin-bottom:10px
+  margin-bottom:3px
 }
 .post-header h1 {
   font-size:36px;
