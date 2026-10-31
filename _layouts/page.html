@@ -1,4 +1,4 @@
 ---
 layout: default
 ---
-<div class="page-wrap"><header class="page-header">{% if page.eyebrow %}<span class="eyebrow">{{ page.eyebrow | escape }}</span>{% endif %}<h1>{{ page.title | escape }}</h1>{% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}</header><div class="prose">{{ content }}</div></div>
+<div class="page-wrap{% if page.url == site.category_urls['ABOUT'] %} about-page{% endif %}"><header class="page-header">{% if page.eyebrow %}<span class="eyebrow">{{ page.eyebrow | escape }}</span>{% endif %}<h1>{{ page.title | escape }}</h1>{% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}</header><div class="prose">{{ content }}</div></div>

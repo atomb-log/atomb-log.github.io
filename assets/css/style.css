@@ -1248,14 +1248,23 @@ main:focus {
 }
 .prose .about-tagline {
   font-family:Georgia,"Times New Roman",serif;
+  font-size:18px;
   text-align:center
 }
 .prose img.about-portrait {
   width:320px;
   height:auto;
   margin:32px auto;
-  border-radius:0;
+  border-radius:50%;
   image-rendering:pixelated
+}
+.about-page>.page-header {
+  border-bottom:0
+}
+.about-page>.page-header h1 {
+  font-family:"Atomb Pixel",var(--body-font);
+  font-weight:400;
+  letter-spacing:0
 }
 .prose h1 {
   font-size:28px;
