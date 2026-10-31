@@ -57,7 +57,7 @@ body {
   background:var(--paper);
   color:var(--ink);
   font-family:var(--body-font);
-  font-size:16px;
+  font-size:15px;
   line-height:1.7;
   word-break:keep-all;
   -webkit-font-smoothing:antialiased
@@ -1190,7 +1190,7 @@ main:focus {
   display:flex;
   align-items:center;
   gap:10px;
-  font-size:11px;
+  font-size:13px;
   font-weight:600;
   color:var(--accent);
   margin-bottom:15px
@@ -1232,7 +1232,7 @@ main:focus {
   margin-right:2px
 }
 .prose {
-  font-size:16px;
+  font-size:15px;
   line-height:1.95;
   overflow-wrap:break-word
 }
@@ -2308,7 +2308,7 @@ main:focus {
     gap:6px
   }
   .prose {
-    font-size:16px;
+    font-size:15px;
     line-height:1.95
   }
   .prose h2 {
