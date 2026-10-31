@@ -1,9 +1,12 @@
 ---
 layout: default
 ---
+{% assign post_category = page.categories.first | default: '노트' %}
+{% assign post_category_key = post_category | downcase %}
+{% assign post_category_url = site.category_urls[post_category] %}
 <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
 <div class="post-wrap"><article class="post-article">
-  <header class="post-header"><a class="text-link back-link" href="{{ '/' | relative_url }}">{% include pixel-arrow-left.html %}전체 글</a><div class="post-category">{{ page.categories.first | default: '노트' | escape }}{% if page.sample %}<span class="sample-label">예시 글</span>{% endif %}</div><h1>{{ page.title | escape }}</h1>{% if page.description %}<p class="post-description">{{ page.description | escape }}</p>{% endif %}<div class="post-byline"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y년 %m월 %d일' }}</time></div></header>
+  <header class="post-header"><a class="text-link back-link" href="{{ '/' | relative_url }}">{% include pixel-arrow-left.html %}전체 글</a><div class="post-category">{% if post_category_url and post_category_key != 'about' %}<a href="{{ post_category_url | relative_url }}">{{ post_category | escape }}</a>{% else %}{{ post_category | escape }}{% endif %}{% if page.sample %}<span class="sample-label">예시 글</span>{% endif %}</div><h1>{{ page.title | escape }}</h1>{% if page.description %}<p class="post-description">{{ page.description | escape }}</p>{% endif %}<div class="post-byline"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y년 %m월 %d일' }}</time></div></header>
   <div class="prose" id="post-content">{{ content }}</div>
   <footer class="post-footer"><div class="post-tags">{% for tag in page.tags %}<a href="{{ '/archive/' | relative_url }}?tag={{ tag | url_encode }}">#{{ tag | escape }}</a>{% endfor %}</div><button class="copy-link text-link" type="button" data-copy-link>{% include icon.html name='link' %}<span>글 주소 복사</span></button></footer>
   <nav class="post-pagination" aria-label="이전 글과 다음 글">{% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><small>← 이전 기록</small><span>{{ page.previous.title | escape }}</span></a>{% else %}<div></div>{% endif %}{% if page.next %}<a class="next-post" href="{{ page.next.url | relative_url }}"><small>다음 기록 →</small><span>{{ page.next.title | escape }}</span></a>{% endif %}</nav>
