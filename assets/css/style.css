@@ -1907,7 +1907,7 @@ main:focus {
   padding:16px 23px 8px
 }
 .search-results {
-  max-height:calc(75vh - 160px);
+  max-height:calc(75vh - 120px);
   min-height:70px;
   overflow-y:auto;
   padding:4px 12px 13px
@@ -1941,19 +1941,6 @@ main:focus {
   background:var(--accent-soft);
   color:var(--accent);
   font-weight:650
-}
-.search-footer {
-  border-top:1px solid var(--line);
-  padding:11px 22px;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  font-size:9px;
-  color:var(--faint)
-}
-.search-footer kbd {
-  font-size:8px;
-  margin-left:5px
 }
 .search-error {
   padding:15px 12px;
@@ -2583,12 +2570,6 @@ main:focus {
   }
   .search-header input {
     font-size:12px
-  }
-  .search-footer>span:first-child {
-    display:none
-  }
-  .search-footer {
-    justify-content:flex-end
   }
   .site-footer {
     width:calc(100% - 46px)
