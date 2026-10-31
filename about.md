@@ -3,9 +3,9 @@ title: About
 permalink: /categories/about/
 ---
 
-<p class="about-tagline">"Ordinary Clinical Data Scientist, not extraordinary at all"</p>
-
 ![빗속에서 창밖을 바라보는 픽셀 소녀]({{ '/assets/images/pixel-girl-avatar-v1.png' | relative_url }}){: .about-portrait width="320" height="320" }
+
+<p class="about-tagline">"Ordinary Clinical Data Scientist, not extraordinary at all"</p>
 
 지식이 쌓일수록 자신이 바라보는 세계는 넓어집니다.  
 그리고 전 아직 갈 길이 멉니다.

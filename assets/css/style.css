@@ -1264,7 +1264,8 @@ main:focus {
 .about-page>.page-header h1 {
   font-family:"Atomb Pixel",var(--body-font);
   font-weight:400;
-  letter-spacing:0
+  letter-spacing:0;
+  text-align:center
 }
 .prose h1 {
   font-size:28px;
