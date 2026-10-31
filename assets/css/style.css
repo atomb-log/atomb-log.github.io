@@ -1542,7 +1542,19 @@ main:focus {
   display:block
 }
 .toc nav a.depth-3 {
+  position:relative;
+  margin-left:4px;
+  border-left:2px solid var(--accent);
   padding-left:10px
+}
+.toc nav a.depth-3 + a.depth-3::before {
+  content:"";
+  position:absolute;
+  left:-2px;
+  top:-10px;
+  height:10px;
+  border-left:2px solid var(--accent);
+  pointer-events:none
 }
 .toc nav a:hover,.toc nav a.active {
   color:var(--accent)
