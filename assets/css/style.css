@@ -1246,6 +1246,17 @@ main:focus {
 .prose p {
   margin:0 0 24px
 }
+.prose .about-tagline {
+  font-family:Georgia,"Times New Roman",serif;
+  text-align:center
+}
+.prose img.about-portrait {
+  width:320px;
+  height:auto;
+  margin:32px auto;
+  border-radius:0;
+  image-rendering:pixelated
+}
 .prose h1 {
   font-size:28px;
   font-weight:650;

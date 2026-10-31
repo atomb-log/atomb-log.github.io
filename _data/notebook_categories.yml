@@ -15,4 +15,5 @@
   icon: /assets/icons/memo-label-v1.svg
 - name: ABOUT
   slug: about
+  url: /categories/about/
   icon: /assets/icons/about-v1.svg

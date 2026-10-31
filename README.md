@@ -17,7 +17,8 @@ tags: [노트]
 ---
 ```
 
-카테고리는 `Stat`, `Math`, `Code`, `Paper`, `Memo`, `ABOUT`을 사용합니다.
+카테고리는 `Stat`, `Math`, `Code`, `Paper`, `Memo`를 사용합니다.
+ABOUT 메뉴는 `about.md`의 소개 글 한 페이지로 바로 연결됩니다.
 코드 블록에는 `python` 또는 `r` 언어 이름을 지정하면 문법 강조가 적용됩니다.
 
 ## 배포

@@ -15,6 +15,11 @@ module AtombLog
       used_slugs = {}
 
       names.each do |name|
+        # About is a standalone Markdown page, with no category archive wrapper.
+        if (direct_url = configured.dig(name, "url"))
+          site.config["category_urls"][name] = direct_url
+          next
+        end
         posts = site.categories.fetch(name, [])
         slug = configured.dig(name, "slug") || Jekyll::Utils.slugify(name, :mode => "default")
         # Keep ordinary Korean names readable, while avoiding collisions such as

@@ -27,7 +27,7 @@
       <a class="header-brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title | escape }} 홈">{% include brand.html %}<span>{{ site.title | escape }}</span></a>
       <nav class="header-nav" aria-label="주요 메뉴">
         <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active" aria-current="page"{% endif %}>HOME</a>
-        <a href="{{ site.category_urls['ABOUT'] | relative_url }}"{% if page.category == 'ABOUT' %} class="active" aria-current="page"{% endif %}>ABOUT</a>
+        <a href="{{ site.category_urls['ABOUT'] | relative_url }}"{% if page.url == site.category_urls['ABOUT'] %} class="active" aria-current="page"{% endif %}>ABOUT</a>
       </nav>
       <button class="theme-toggle icon-button" type="button" aria-label="밝은 모드로 전환" title="밝은 모드로 전환">
         <svg class="icon theme-sun" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M10 1h4v4h-4zM10 19h4v4h-4zM1 10h4v4H1zM19 10h4v4h-4zM4 4h3v3H4zM17 4h3v3h-3zM4 17h3v3H4zM17 17h3v3h-3zM8 7h8v2h2v6h-2v2H8v-2H6V9h2z"/></svg>

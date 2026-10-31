@@ -1,28 +1,20 @@
 ---
-title: 이 공간에 대하여
-eyebrow: A NOTE ABOUT THIS SPACE
-description: "배운 것과 만든 것, 그리고 그 사이의 생각들."
-permalink: /about/
+title: About
+permalink: /categories/about/
 ---
 
-## 안녕하세요, atomb입니다.
+<p class="about-tagline">"Ordinary Clinical Data Scientist, not extraordinary at all"</p>
 
-이곳은 공부하며 발견한 것과 직접 만들어 본 것들을 차곡차곡 모으는 개인 블로그입니다.
+![도서관에서 책을 읽는 안경 쓴 검은 머리의 연구자]({{ '/assets/images/about-library-reader-v3.png' | relative_url }}){: .about-portrait width="320" height="320" }
 
-그때는 분명히 이해했던 것도 시간이 지나면 흐려집니다. 다음에 같은 길을 걸을 나를 위해, 작은 발견부터 천천히 적어 두려고 합니다.
+지식이 쌓일수록 자신이 바라보는 세계는 넓어집니다.
+그리고 전 아직 갈 길이 멉니다.
 
-> 완성된 답보다, 답을 찾아가는 과정을 기록합니다.
+### Research Interest
+데이터의 본질에 가장 가까운 방법으로 분석하기
+내가 사용하는 기술의 가장 근간이 되는 원리와 개념까지 파헤치기
 
-## 이런 기록을 남깁니다
-
-- **배움** — 새롭게 이해한 개념과 직접 해 본 연습
-- **만들기** — 작은 프로젝트를 시작하고 다듬는 과정
-- **생각** — 일상에서 붙잡아 둔 질문과 문장
-
-## 이 블로그에 대하여
-
-이 블로그의 글은 Markdown으로 작성합니다. 화면은 Lanyon의 간결함, Just the Docs의 탐색 구조, YAT의 읽기 경험에서 영감을 받아 새롭게 구성했습니다.
-
-아직은 작은 노트지만, 시간이 지나면서 나만의 쓸모 있는 아카이브가 되기를 바랍니다.
-
-*이 소개는 시작을 위한 예시입니다. 편하게 본인의 이야기로 바꿔 주세요.*
+### Other Personal Interest
+오픈월드를 돌아다니며 NPC들에게 말걸기
+키보드보다 불편한 게임패드로 픽셀도트 게임하며 향수느끼기
+주말아침 스터디카페에서 작업에 몰입하기
