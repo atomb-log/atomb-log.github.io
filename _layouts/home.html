@@ -61,7 +61,6 @@ layout: default
         <div class="filter-bar home-tag-filter" aria-label="글 태그 선택"><button class="filter-chip active" type="button" data-home-tag="" aria-pressed="true">ALL</button>{% for tag in home_tags %}<button class="filter-chip" type="button" data-home-tag="{{ tag[0] | escape }}" aria-pressed="false">#{{ tag[0] | escape }}</button>{% endfor %}</div>
         <div class="post-list" id="post-list">
           {% for post in site.posts %}{% include post-item.html post=post %}{% endfor %}
-          {% if site.posts.size == 0 %}<div class="empty-state"><h3>첫 기록을 기다리고 있어요.</h3><p>새로운 글이 이곳에 차곡차곡 쌓입니다.</p></div>{% endif %}
           <p class="filter-empty" role="status" hidden>이 태그의 글이 아직 없습니다.</p>
         </div>
       </div>

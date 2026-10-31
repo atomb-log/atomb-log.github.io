@@ -10,7 +10,7 @@
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
     } catch (_) {}
   </script>
-  {% seo %}
+  {% if page.url == '/' %}<title>{{ site.title | escape }}</title>{% seo title=false %}{% else %}{% seo %}{% endif %}
   {% feed_meta %}
   <link rel="icon" type="image/png" href="{{ '/assets/images/pixel-girl-avatar-v1.png' | relative_url }}">
   {% assign site_asset_version = site.time | date: '%s' %}

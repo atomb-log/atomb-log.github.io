@@ -6,7 +6,6 @@ layout: default
     <span class="eyebrow">CATEGORY</span>
     <h1>{{ page.category | escape }}</h1>
   </header>
-  {% if page.posts.size == 0 %}<p class="archive-empty">아직 이 카테고리에 작성된 글이 없습니다.</p>{% endif %}
   <div class="category-year-list">
     {% assign posts_by_year = page.posts | group_by_exp: 'post', "post.date | date: '%Y'" %}
     {% for year in posts_by_year %}
