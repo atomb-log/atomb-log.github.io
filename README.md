@@ -17,7 +17,7 @@ tags: [노트]
 ---
 ```
 
-카테고리는 `Stat`, `Math`, `Code`, `Paper`, `ABOUT`을 사용합니다.
+카테고리는 `Stat`, `Math`, `Code`, `Paper`, `Memo`, `ABOUT`을 사용합니다.
 코드 블록에는 `python` 또는 `r` 언어 이름을 지정하면 문법 강조가 적용됩니다.
 
 ## 배포

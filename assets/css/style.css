@@ -679,7 +679,15 @@ main:focus {
   height: 8.5%;
   cursor: pointer;
 }
-.paper-stack-link::before {
+.memo-book-link {
+  position:absolute;
+  left:37.68%;
+  top:70.67%;
+  width:14.35%;
+  height:5.53%;
+  cursor:pointer
+}
+.paper-stack-link::before,.memo-book-link::before {
   content: "";
   position: absolute;
   inset: 50% auto auto 50%;
@@ -689,11 +697,11 @@ main:focus {
   min-height: 44px;
   transform: translate(-50%, -50%);
 }
-.paper-stack-link:hover, .paper-stack-link:focus-visible {
+.paper-stack-link:hover,.paper-stack-link:focus-visible,.memo-book-link:hover,.memo-book-link:focus-visible {
   outline: 2px solid #e4efff;
   outline-offset: 2px;
 }
-.paper-stack-label {
+.paper-stack-label,.memo-book-label {
   position: absolute;
   top: calc(100% + 4px);
   left: 50%;
@@ -704,6 +712,10 @@ main:focus {
   image-rendering: pixelated;
   filter: drop-shadow(2px 2px 0 #101a30);
   pointer-events: none;
+}
+.memo-book-label {
+  top:calc(100% + 8px);
+  width:40%
 }
 .cat-figurine-link {
   position:absolute;

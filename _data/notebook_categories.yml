@@ -10,6 +10,9 @@
 - name: Paper
   slug: paper
   icon: /assets/icons/paper-label-v1.svg
+- name: Memo
+  slug: memo
+  icon: /assets/icons/memo-label-v1.svg
 - name: ABOUT
   slug: about
   icon: /assets/icons/about-v1.svg
