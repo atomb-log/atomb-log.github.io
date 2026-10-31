@@ -37,8 +37,6 @@
   const input = $('#search-input');
   const results = $('#search-results');
   const status = $('#search-status');
-  const headerSearch = $('.header-search');
-  const headerSearchInput = $('#header-search-input');
   let indexPromise;
   let searchReturnFocus;
   let requestNumber = 0;
@@ -131,8 +129,7 @@
       results.append(message);
     }
   }
-  function openSearch(query) {
-    if (typeof query === 'string') input.value = query;
+  function openSearch() {
     if (dialog.open) { input.focus(); input.select(); return; }
     searchReturnFocus = document.activeElement;
     dialog.showModal();
@@ -140,10 +137,6 @@
     search();
   }
   $$('[data-search-open]').forEach(button => button.addEventListener('click', () => openSearch()));
-  headerSearch?.addEventListener('submit', event => {
-    event.preventDefault();
-    openSearch(headerSearchInput.value);
-  });
   $('[data-search-close]').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => {
     if (event.target !== dialog) return;
@@ -152,7 +145,6 @@
   });
   dialog.addEventListener('close', () => { ++requestNumber; searchReturnFocus?.focus(); });
   input.addEventListener('input', () => {
-    if (headerSearchInput) headerSearchInput.value = input.value;
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(search, 100);
   });
