@@ -1,0 +1,7 @@
+{% assign post = include.post %}
+<article class="post-item" data-categories="{{ post.categories | jsonify | escape }}" data-tags="{{ post.tags | jsonify | escape }}">
+  <div class="post-item-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time><span class="meta-dot">·</span><span>{{ post.categories.first | default: '노트' | escape }}</span>{% if post.sample %}<span class="sample-label">예시 글</span>{% endif %}</div>
+  <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+  <p class="post-excerpt">{{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 115 | escape }}</p>
+  <div class="post-item-bottom"><div class="post-tags">{% for tag in post.tags limit: 3 %}<a href="{{ '/archive/' | relative_url }}?tag={{ tag | url_encode }}">#{{ tag | escape }}</a>{% endfor %}</div></div>
+</article>

@@ -1,0 +1,65 @@
+---
+layout: default
+---
+<section class="pixel-hero" aria-label="픽셀 작업실">
+  <h1 class="visually-hidden">{{ site.title | escape }}</h1>
+  <div class="pixel-scene">
+    <!-- Both themes share one geometry; only color filters and lights change. -->
+    <img class="pixel-hero-image scene-interior-tone" src="{{ '/assets/images/pixel-study-room-day-v1.png' | relative_url }}" alt="책장 위 피규어와 애니 포스터, 컴퓨터와 큰 창문이 있는 픽셀 작업실" width="1672" height="941" fetchpriority="high" decoding="async">
+    <svg class="scene-window-view" viewBox="0 0 1672 941" style="width:100%;height:100%;image-rendering:pixelated" aria-hidden="true" focusable="false">
+      <defs>
+      <filter id="night-room-tone" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".30 0 0 0 0  0 .42 0 0 0  0 0 .60 0 .015  0 0 0 1 0"/></filter>
+      <filter id="night-window-tone" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".08 0 0 0 .012  0 .18 0 0 .025  0 0 .43 0 .06  0 0 0 1 0"/></filter>
+      <clipPath id="day-window-view" clipPathUnits="userSpaceOnUse">
+        <rect x="1050" y="134" width="262" height="424"/>
+        <rect x="1338" y="134" width="286" height="424"/>
+        <path d="M1050 579H1312V665H1140V640H1050Z"/>
+        <rect x="1338" y="579" width="286" height="86"/>
+      </clipPath></defs>
+      <image class="window-shared" href="{{ '/assets/images/pixel-study-room-day-v6-fuller-trees.png' | relative_url }}" width="1672" height="941" clip-path="url(#day-window-view)"/>
+      <g class="window-night-lights" clip-path="url(#day-window-view)" fill="#fff0b8" shape-rendering="crispEdges">
+        <path d="M1109 495h7v19h-7zM1125 495h7v19h-7zM1516 432h8v15h-8zM1532 432h8v15h-8zM1548 473h8v14h-8zM1605 374h6v14h-6zM1347 548h9v9h-9zM1365 548h9v9h-9z"/>
+        <path d="M1223 217h4v4h-4zM1185 279h3v3h-3zM1371 171h4v4h-4zM1535 209h4v4h-4zM1589 280h3v3h-3z"/>
+      </g>
+    </svg>
+    <svg class="scene-edits" viewBox="0 0 1672 941" width="1672" height="941" aria-hidden="true" focusable="false">
+      <defs><clipPath id="scene-edited-objects" clipPathUnits="userSpaceOnUse">
+        <rect x="85" y="460" width="212" height="176"/>
+        <rect x="616" y="462" width="46" height="72"/>
+        <rect x="610" y="280" width="96" height="120"/>
+      </clipPath><clipPath id="scene-paper-stack" clipPathUnits="userSpaceOnUse"><rect x="445" y="624" width="120" height="80"/></clipPath><clipPath id="scene-math-poster" clipPathUnits="userSpaceOnUse"><rect x="736" y="177" width="117" height="211"/></clipPath>
+      <clipPath id="day-edited-objects" clipPathUnits="userSpaceOnUse">
+        <path d="M102 462H294V610H287V615H245V624H259V633H110V626H135V615H101V609H95V471H102Z"/>
+        <path d="M657 285H663V293H670V290H680V295H686V303H692V326H696V350H700V358H704V374H699V382H687V390H693V398H633V392H648V380H637V383H626V376H622V358H628V344H632V334H626V322H632V318H639V308H638V298H645V294H651V290H657Z"/>
+      </clipPath>
+      <clipPath id="day-paper-stack" clipPathUnits="userSpaceOnUse"><path d="M489 630H509V633H559V639H554V648H561V654H556V660H561V667H556V673H561V680H556V686H560V693H550V698H531V700H520V694H497V690H476V685H453V674H450V650H461V644H475V638H489Z"/></clipPath></defs>
+      <image class="scene-object-patches" href="{{ '/assets/images/pixel-study-room-v8.png' | relative_url }}" width="1672" height="941" clip-path="url(#scene-edited-objects)"/>
+      <image class="scene-paper-patch" href="{{ '/assets/images/pixel-study-room-v10-paper.png' | relative_url }}" width="1672" height="941" clip-path="url(#scene-paper-stack)"/>
+      <image href="{{ '/assets/images/pixel-study-room-v11-math.png' | relative_url }}" width="1672" height="941" clip-path="url(#scene-math-poster)"/>
+    </svg>
+    <svg class="scene-middle-figurine scene-interior-tone" viewBox="0 0 1672 941" style="width:100%;height:100%;image-rendering:pixelated" aria-hidden="true" focusable="false">
+      <defs><clipPath id="day-middle-figurine" clipPathUnits="userSpaceOnUse"><rect x="616" y="462" width="46" height="72"/></clipPath></defs>
+      <image href="{{ '/assets/images/pixel-study-room-day-v3-figurine.png' | relative_url }}" width="1672" height="941" clip-path="url(#day-middle-figurine)"/>
+    </svg>
+    {% include pixel-lamp-light.html %}
+    {% include pixel-icon-outlines.html %}
+    <a class="paper-stack-link" href="{{ site.category_urls['Paper'] | relative_url }}" aria-label="Paper — 서류뭉치"><img class="paper-stack-label" src="{{ '/assets/icons/paper-label-v1.svg' | relative_url }}" alt="" width="116" height="28"></a>
+    <button class="desk-lamp-switch" type="button" aria-label="책상 전등" aria-pressed="false" title="책상 전등 켜기 / 끄기"></button>
+    <a class="computer-screen-link" href="{{ site.category_urls['Code'] | relative_url }}" aria-label="Code — 컴퓨터 화면"><img class="computer-code-label" src="{{ '/assets/icons/code-label-v1.svg' | relative_url }}" alt="" width="92" height="28"></a>
+    <a class="wizard-poster-link" href="{{ site.category_urls['Stat'] | relative_url }}" aria-label="Stat — 마법사 포스터"><img class="poster-stat-label" src="{{ '/assets/icons/stat-label-v1.svg' | relative_url }}" alt="" width="92" height="28"></a>
+    <a class="math-poster-link" href="{{ site.category_urls['Math'] | relative_url }}" aria-label="Math — 양갈래 머리 포스터"><img class="poster-math-formula" src="{{ '/assets/icons/math-formula-v1.svg' | relative_url }}" alt="1+1 =" width="116" height="28"><img class="poster-math-label" src="{{ '/assets/icons/math-label-v2.svg' | relative_url }}" alt="" width="92" height="28"></a>
+    <a class="cat-figurine-link" href="{{ site.category_urls['ABOUT'] | relative_url }}" aria-label="ABOUT — 고양이 소녀 피규어"><img class="figurine-about-label" src="{{ '/assets/icons/about-label-v1.svg' | relative_url }}" alt="" width="116" height="28"></a>
+  </div>
+</section>
+<div class="home-wrap">
+  <section class="notes-section" aria-labelledby="notes-title">
+    <div class="section-heading"><h2 id="notes-title">RECENT POSTS</h2></div>
+    {% assign home_tags = site.tags | sort %}
+    <div class="filter-bar home-tag-filter" aria-label="글 태그 선택"><button class="filter-chip active" type="button" data-home-tag="" aria-pressed="true">ALL</button>{% for tag in home_tags %}<button class="filter-chip" type="button" data-home-tag="{{ tag[0] | escape }}" aria-pressed="false">#{{ tag[0] | escape }}</button>{% endfor %}</div>
+    <div class="notes-layout"><div class="post-list" id="post-list">
+      {% for post in site.posts %}{% include post-item.html post=post %}{% endfor %}
+      {% if site.posts.size == 0 %}<div class="empty-state"><h3>첫 기록을 기다리고 있어요.</h3><p>새로운 글이 이곳에 차곡차곡 쌓입니다.</p></div>{% endif %}
+      <p class="filter-empty" role="status" hidden>이 태그의 글이 아직 없습니다.</p>
+    </div><aside class="notebook-aside"><nav class="aside-topics" aria-label="CATEGORIES"><span class="notebook-heading">CATEGORIES</span>{% for category in site.data.notebook_categories %}{% unless category.name == 'ABOUT' %}{% assign category_url = site.category_urls[category.name] %}<a href="{{ category_url | relative_url }}">{{ category.name | escape }}</a>{% endunless %}{% endfor %}</nav></aside></div>
+  </section>
+</div>

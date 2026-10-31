@@ -1,0 +1,15 @@
+- name: Stat
+  slug: stat
+  icon: /assets/icons/stat-v1.svg
+- name: Math
+  slug: math
+  icon: /assets/icons/math-v1.svg
+- name: Code
+  slug: code
+  icon: /assets/icons/code-v1.svg
+- name: Paper
+  slug: paper
+  icon: /assets/icons/paper-label-v1.svg
+- name: ABOUT
+  slug: about
+  icon: /assets/icons/about-v1.svg

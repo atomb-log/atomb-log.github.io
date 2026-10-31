@@ -1,0 +1,49 @@
+title: atomb-log
+description: "배운 것과 만든 것, 그리고 그 사이의 생각을 기록합니다."
+tagline: "작은 기록이 쌓이는 곳."
+url: "https://atomb-log.github.io"
+baseurl: ""
+lang: ko-KR
+timezone: Asia/Seoul
+author:
+  name: atomb
+github_username: atomb-log
+
+permalink: /notes/:year/:month/:day/:title/
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  auto_ids: true
+excerpt_separator: "<!--more-->"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      toc: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .bundle
+  - .local
+  - scripts
+  - tests
+  - LICENSE
+  - AGENTS.md

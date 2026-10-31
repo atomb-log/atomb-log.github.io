@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ko-KR' }}" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('atomb-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
+    } catch (_) {}
+  </script>
+  {% seo %}
+  {% feed_meta %}
+  <link rel="icon" type="image/png" href="{{ '/assets/images/pixel-girl-avatar-v1.png' | relative_url }}">
+  {% assign site_asset_version = site.time | date: '%s' %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site_asset_version }}">
+  <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site_asset_version }}" defer></script>
+</head>
+<body data-search-url="{{ '/search.json' | relative_url }}">
+  <a class="skip-link" href="#main-content">본문으로 바로가기</a>
+  <div class="site-shell">
+    <header class="topbar"><div class="topbar-inner">
+      <a class="header-brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title | escape }} 홈">{% include brand.html %}<span>{{ site.title | escape }}</span></a>
+      <nav class="header-nav" aria-label="주요 메뉴">
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active" aria-current="page"{% endif %}>HOME</a>
+        <a href="{{ site.category_urls['ABOUT'] | relative_url }}"{% if page.category == 'ABOUT' %} class="active" aria-current="page"{% endif %}>ABOUT</a>
+      </nav>
+      <button class="theme-toggle icon-button" type="button" aria-label="밝은 모드로 전환" title="밝은 모드로 전환">
+        <svg class="icon theme-sun" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M10 1h4v4h-4zM10 19h4v4h-4zM1 10h4v4H1zM19 10h4v4h-4zM4 4h3v3H4zM17 4h3v3h-3zM4 17h3v3H4zM17 17h3v3h-3zM8 7h8v2h2v6h-2v2H8v-2H6V9h2z"/></svg>
+        <svg class="icon theme-moon" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M9 2h5v3h-3v3H9v7h3v3h7v-3h3v5h-3v2H8v-2H5v-3H3V8h2V5h4z"/></svg>
+      </button>
+    </div></header>
+    <main id="main-content" tabindex="-1">{{ content }}</main>
+    <footer class="site-footer"><span>© {{ site.time | date: '%Y' }} {{ site.title | escape }}</span><span>작은 기록, 오래 남는 생각.</span></footer>
+  </div>
+  <dialog class="search-dialog" id="search-dialog" aria-labelledby="search-title">
+    <div class="search-header">{% include icon.html name='search' %}<label id="search-title" class="visually-hidden" for="search-input">글 검색</label><input id="search-input" type="search" placeholder="어떤 기록을 찾고 있나요?" autocomplete="off"><button class="search-close" type="button" data-search-close aria-label="검색 닫기">Esc</button></div>
+    <div class="search-status" id="search-status" role="status" aria-live="polite">제목, 내용, 주제로 검색할 수 있어요.</div>
+    <div class="search-results" id="search-results"></div>
+    <div class="search-footer"><span>키보드로도 편하게 찾아보세요.</span><span><kbd>Tab</kbd> 이동 <kbd>Enter</kbd> 열기</span></div>
+  </dialog>
+  <button class="back-to-top icon-button" data-back-top type="button" aria-label="맨 위로 이동">↑</button>
+</body>
+</html>

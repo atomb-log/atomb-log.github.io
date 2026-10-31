@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<div class="page-wrap category-page">
+  <header class="page-header category-header">
+    <span class="eyebrow">CATEGORY</span>
+    <h1>{{ page.category | escape }}</h1>
+  </header>
+  {% if page.posts.size == 0 %}<p class="archive-empty">아직 이 카테고리에 작성된 글이 없습니다.</p>{% endif %}
+  <div class="category-year-list">
+    {% assign posts_by_year = page.posts | group_by_exp: 'post', "post.date | date: '%Y'" %}
+    {% for year in posts_by_year %}
+    <section class="category-year" aria-labelledby="year-{{ year.name }}">
+      <h2 id="year-{{ year.name }}">{{ year.name }}<span>{{ year.items.size }}개의 기록</span></h2>
+      <ul class="category-posts">
+        {% for post in year.items %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}" aria-label="{{ post.date | date: '%Y년 %m월 %d일' }}">{{ post.date | date: '%m.%d' }}</time>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endfor %}
+  </div>
+</div>
