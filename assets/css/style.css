@@ -593,9 +593,10 @@ main:focus {
   position:relative;
   display:block;
   width:100%;
+  max-width:1170px;
   aspect-ratio:1296 / 789;
   overflow:hidden;
-  margin:0;
+  margin:0 auto;
   padding:0;
   border:0;
   box-shadow:none;
