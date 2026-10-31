@@ -1252,7 +1252,7 @@ main:focus {
   text-align:center
 }
 .prose img.about-portrait {
-  width:320px;
+  width:calc(320px * 2 / 3);
   height:auto;
   margin:32px auto;
   border-radius:50%;
