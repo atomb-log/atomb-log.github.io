@@ -1541,12 +1541,40 @@ main:focus {
   line-height:1.8;
   display:block
 }
-.toc nav a.depth-3 {
+.toc-parent {
   position:relative;
+  padding-right:14px;
+  list-style:none;
+  cursor:pointer
+}
+.toc-parent::-webkit-details-marker {
+  display:none
+}
+.toc-parent::after {
+  content:"";
+  position:absolute;
+  right:1px;
+  top:7px;
+  border-top:3px solid transparent;
+  border-bottom:3px solid transparent;
+  border-left:4px solid var(--muted);
+  pointer-events:none
+}
+.toc-branch[open]>.toc-parent::after {
+  transform:rotate(90deg)
+}
+.toc-children {
+  position:relative;
+  display:grid;
+  gap:10px;
+  margin-top:10px;
   margin-left:4px;
   padding-left:12px
 }
-.toc nav a.depth-3::before {
+.toc-branch:not([open])>.toc-children {
+  display:none
+}
+.toc-children::before {
   content:"";
   position:absolute;
   left:0;
@@ -1556,10 +1584,10 @@ main:focus {
   background:var(--accent);
   pointer-events:none
 }
-.toc nav a.depth-3 + a.depth-3::before {
-  top:-10px
-}
 .toc nav a:hover,.toc nav a.active {
+  color:var(--accent)
+}
+.toc-branch:has(a.active)>.toc-parent>a {
   color:var(--accent)
 }
 .toc nav a.active {

@@ -195,6 +195,8 @@
   const toc = $('#toc-links');
   if (prose) {
     const headings = $$('h1, h2, h3', prose);
+    const tocRoots = [];
+    const tocParents = [];
     headings.forEach((heading, index) => {
       const label = heading.textContent;
       if (!heading.id) heading.id = `section-${index + 1}`;
@@ -210,9 +212,31 @@
         link.dataset.heading = heading.id;
         link.className = `depth-${heading.tagName.slice(1)}`;
         link.textContent = label;
-        toc.append(link);
+        const entry = { level: Number(heading.tagName.slice(1)), link, children: [] };
+        while (tocParents.length && tocParents.at(-1).level >= entry.level) tocParents.pop();
+        (tocParents.at(-1)?.children || tocRoots).push(entry);
+        tocParents.push(entry);
       }
     });
+    function appendTocEntry(entry, parent) {
+      if (!entry.children.length) { parent.append(entry.link); return; }
+      const branch = document.createElement('details');
+      branch.className = 'toc-branch';
+      const summary = document.createElement('summary');
+      summary.className = 'toc-parent';
+      summary.append(entry.link);
+      const children = document.createElement('div');
+      children.className = 'toc-children';
+      branch.append(summary, children);
+      entry.children.forEach(child => appendTocEntry(child, children));
+      // Native summary activation handles the arrow and keyboard. Title links
+      // also toggle the branch while keeping their ordinary heading navigation.
+      entry.link.addEventListener('click', event => {
+        if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) branch.toggleAttribute('open');
+      });
+      parent.append(branch);
+    }
+    if (toc) tocRoots.forEach(entry => appendTocEntry(entry, toc));
     if (!headings.length) $('.toc')?.setAttribute('hidden', '');
     let ticking = false;
     function updateReading() {
