@@ -1422,8 +1422,16 @@ main:focus {
   line-height:1.7
 }
 .prose th {
-  background:var(--sidebar);
+  background:var(--accent-soft);
+  color:var(--accent);
+  border-bottom:2px solid var(--accent);
   font-weight:600
+}
+.prose th:first-child,.prose td:first-child {
+  border-left:0
+}
+.prose th:last-child,.prose td:last-child {
+  border-right:0
 }
 .prose img {
   display:block;
