@@ -1735,24 +1735,14 @@ main:focus {
   margin-bottom:46px
 }
 .category-year h2 {
-  display:flex;
-  align-items:baseline;
-  gap:14px;
   padding-bottom:14px;
   border-bottom:1px solid var(--line);
   color:var(--accent);
-  font-family:var(--mono-font);
+  font-family:"Atomb Pixel",var(--body-font);
   font-size:25px;
-  font-weight:500;
-  letter-spacing:-.7px;
-  scroll-margin-top:95px
-}
-.category-year h2>span {
-  color:var(--faint);
-  font-family:var(--body-font);
-  font-size:10px;
   font-weight:400;
-  letter-spacing:0
+  letter-spacing:0;
+  scroll-margin-top:95px
 }
 .category-posts {
   padding:12px 0 0;
