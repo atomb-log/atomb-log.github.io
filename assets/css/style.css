@@ -1190,10 +1190,10 @@ main:focus {
   display:flex;
   align-items:center;
   gap:10px;
-  font-size:13px;
+  font-size:15px;
   font-weight:600;
   color:var(--accent);
-  margin-bottom:15px
+  margin-bottom:13px
 }
 .post-header h1 {
   font-size:36px;
