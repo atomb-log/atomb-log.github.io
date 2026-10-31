@@ -1247,8 +1247,9 @@ main:focus {
   margin:0 0 24px
 }
 .prose .about-tagline {
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:"Atomb Pixel",var(--body-font);
   font-size:18px;
+  color:var(--accent);
   text-align:center
 }
 .prose img.about-portrait {
