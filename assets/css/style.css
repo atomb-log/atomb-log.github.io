@@ -930,6 +930,7 @@ main:focus {
   font-family:"Atomb Pixel",var(--body-font);
   font-weight:400;
   letter-spacing:0;
+  margin-top:0;
 }
 .home-tag-filter .filter-chip {
   background:transparent;
@@ -975,6 +976,9 @@ main:focus {
   grid-template-columns:minmax(0,1fr) 185px;
   gap:40px;
   align-items:start
+}
+.notes-main {
+  min-width:0
 }
 .post-item {
   padding:26px 0;
@@ -1039,7 +1043,7 @@ main:focus {
   color:var(--accent)
 }
 .notebook-aside {
-  padding-top:27px
+  padding-top:0
 }
 .aside-note {
   border:1px solid var(--line);
