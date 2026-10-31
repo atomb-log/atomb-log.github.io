@@ -1518,7 +1518,7 @@ main:focus {
   align-self:start;
   position:sticky;
   top:110px;
-  border-left:1px solid var(--line);
+  border-left:0;
   padding-left:20px;
   margin-top:45px
 }
