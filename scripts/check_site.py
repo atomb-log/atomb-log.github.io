@@ -96,4 +96,4 @@ for name in ("Gemfile", "Gemfile.lock", "README.md", "vendor", "scripts", ".bund
 
 if errors:
     raise SystemExit("\n".join(errors))
-print(f"PASS: {len(pages)} HTML pages, {len(posts)} searchable posts, local links, RSS, sitemap, and source exclusions.")
+print(f"PASS: {len(pages)} HTML pages, {len(posts)} search entries, local links, RSS, sitemap, and source exclusions.")

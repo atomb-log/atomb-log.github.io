@@ -29,6 +29,11 @@
         <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active" aria-current="page"{% endif %}>HOME</a>
         <a href="{{ site.category_urls['ABOUT'] | relative_url }}"{% if page.url == site.category_urls['ABOUT'] %} class="active" aria-current="page"{% endif %}>ABOUT</a>
       </nav>
+      <form class="header-search" role="search" aria-label="블로그 검색">
+        <label class="visually-hidden" for="header-search-input">검색어</label>
+        <input id="header-search-input" type="search" placeholder="검색어 입력" autocomplete="off">
+        <button type="submit" aria-label="검색" aria-haspopup="dialog" aria-controls="search-dialog">{% include icon.html name='search' %}</button>
+      </form>
       <button class="theme-toggle icon-button" type="button" aria-label="밝은 모드로 전환" title="밝은 모드로 전환">
         <svg class="icon theme-sun" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M10 1h4v4h-4zM10 19h4v4h-4zM1 10h4v4H1zM19 10h4v4h-4zM4 4h3v3H4zM17 4h3v3h-3zM4 17h3v3H4zM17 17h3v3h-3zM8 7h8v2h2v6h-2v2H8v-2H6V9h2z"/></svg>
         <svg class="icon theme-moon" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M9 2h5v3h-3v3H9v7h3v3h7v-3h3v5h-3v2H8v-2H5v-3H3V8h2V5h4z"/></svg>
@@ -38,8 +43,8 @@
     <footer class="site-footer"><span>© {{ site.time | date: '%Y' }} {{ site.title | escape }}</span><span>AD VERITAS</span></footer>
   </div>
   <dialog class="search-dialog" id="search-dialog" aria-labelledby="search-title">
-    <div class="search-header">{% include icon.html name='search' %}<label id="search-title" class="visually-hidden" for="search-input">글 검색</label><input id="search-input" type="search" placeholder="어떤 기록을 찾고 있나요?" autocomplete="off"><button class="search-close" type="button" data-search-close aria-label="검색 닫기">Esc</button></div>
-    <div class="search-status" id="search-status" role="status" aria-live="polite">제목, 내용, 주제로 검색할 수 있어요.</div>
+    <div class="search-header">{% include icon.html name='search' %}<label id="search-title" class="visually-hidden" for="search-input">블로그 검색</label><input id="search-input" type="search" placeholder="제목, 본문, 태그, 카테고리 검색" autocomplete="off"><button class="search-close" type="button" data-search-close aria-label="검색 닫기">Esc</button></div>
+    <div class="search-status" id="search-status" role="status" aria-live="polite">제목, 본문, 태그, 카테고리로 검색할 수 있어요.</div>
     <div class="search-results" id="search-results"></div>
     <div class="search-footer"><span>키보드로도 편하게 찾아보세요.</span><span><kbd>Tab</kbd> 이동 <kbd>Enter</kbd> 열기</span></div>
   </dialog>

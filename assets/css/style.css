@@ -440,6 +440,47 @@ kbd {
   color:var(--accent);
   border-bottom-color:var(--accent)
 }
+.header-search {
+  display:flex;
+  align-items:center;
+  width:clamp(140px,18vw,210px);
+  height:36px;
+  flex-shrink:0;
+  border:1px solid var(--line);
+  background:var(--accent-soft)
+}
+.header-search:focus-within {
+  border-color:var(--accent)
+}
+.header-search input {
+  width:100%;
+  min-width:0;
+  padding:0 0 0 10px;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--ink);
+  font-size:13px
+}
+.header-search input::placeholder {
+  color:var(--muted)
+}
+.header-search button {
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  padding:0;
+  flex-shrink:0;
+  color:var(--muted)
+}
+.header-search button:hover {
+  color:var(--accent)
+}
+.header-search .icon {
+  width:17px;
+  height:17px
+}
 .breadcrumbs {
   display:flex;
   align-items:center;
@@ -2251,6 +2292,17 @@ main:focus {
     font-size:10px;
     letter-spacing:.04em
   }
+  .header-search {
+    width:32px;
+    border:0;
+    background:transparent
+  }
+  .header-search input {
+    display:none
+  }
+  .header-search button {
+    width:32px
+  }
   .menu-toggle {
     display:inline-flex;
     margin-left:-7px
@@ -2436,7 +2488,8 @@ main:focus {
     padding:0 23px
   }
   .topbar-inner {
-    padding:0 18px
+    padding:0 18px;
+    gap:8px
   }
   .header-brand {
     font-size:15px;

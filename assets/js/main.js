@@ -37,34 +37,51 @@
   const input = $('#search-input');
   const results = $('#search-results');
   const status = $('#search-status');
+  const headerSearch = $('.header-search');
+  const headerSearchInput = $('#header-search-input');
   let indexPromise;
   let searchReturnFocus;
   let requestNumber = 0;
   let debounceTimer;
   const normalize = text => String(text).normalize('NFKC').toLocaleLowerCase('ko-KR');
+  const graphemes = new Intl.Segmenter('ko-KR', { granularity: 'grapheme' });
+  function findTextMatch(text, query) {
+    if (!query) return;
+    const needle = normalize(query);
+    const position = normalize(text).indexOf(needle);
+    if (position < 0) return;
+    let offset = 0;
+    let start;
+    for (const { segment, index } of graphemes.segment(text)) {
+      const next = offset + normalize(segment).length;
+      if (start === undefined && next > position) start = index;
+      if (next >= position + needle.length) return { start, end: index + segment.length };
+      offset = next;
+    }
+  }
   async function loadIndex() {
     if (!indexPromise) {
       indexPromise = fetch(document.body.dataset.searchUrl, { credentials: 'same-origin' })
         .then(response => { if (!response.ok) throw new Error('Search index unavailable'); return response.json(); })
-        .then(posts => posts.map(post => ({ ...post, searchable: normalize([post.title, post.content, ...post.categories, ...post.tags].join(' ')) })))
+        .then(posts => posts.map(post => ({ ...post, searchable: normalize([post.title, post.description || '', post.content, post.date, ...post.categories, ...post.tags].join(' ')) })))
         .catch(error => { indexPromise = undefined; throw error; });
     }
     return indexPromise;
   }
   function highlighted(text, query) {
     const fragment = document.createDocumentFragment();
-    const position = normalize(text).indexOf(normalize(query));
-    if (!query || position < 0) { fragment.append(document.createTextNode(text)); return fragment; }
-    fragment.append(document.createTextNode(text.slice(0, position)));
+    const match = findTextMatch(text, query);
+    if (!match) { fragment.append(document.createTextNode(text)); return fragment; }
+    fragment.append(document.createTextNode(text.slice(0, match.start)));
     const mark = document.createElement('mark');
-    mark.textContent = text.slice(position, position + query.length);
-    fragment.append(mark, document.createTextNode(text.slice(position + query.length)));
+    mark.textContent = text.slice(match.start, match.end);
+    fragment.append(mark, document.createTextNode(text.slice(match.end)));
     return fragment;
   }
   async function search() {
     const current = ++requestNumber;
     const query = input.value.trim();
-    const tokens = normalize(query).split(/\s+/u).filter(Boolean);
+    const tokens = normalize(query).split(/\s+/u).map(token => token.replace(/^#/u, '')).filter(Boolean);
     status.textContent = '기록을 불러오는 중입니다…';
     try {
       const posts = await loadIndex();
@@ -75,24 +92,24 @@
           .sort((a, b) => b.score - a.score).map(item => item.post);
       }
       results.replaceChildren();
-      status.textContent = query ? `“${query}” · ${matches.length}개의 기록` : `최근 기록 ${Math.min(matches.length, 6)}개 · 제목, 내용, 주제로 검색하세요.`;
+      status.textContent = query ? `“${query}” · 검색 결과 ${matches.length}개` : '제목, 본문, 태그, 카테고리로 검색하세요.';
       if (query && !matches.length) {
         const empty = document.createElement('p');
         empty.className = 'search-error';
-        empty.textContent = '일치하는 기록이 없어요. 다른 단어로 찾아보세요.';
+        empty.textContent = '일치하는 글이나 페이지가 없어요. 다른 단어로 찾아보세요.';
         results.append(empty);
       }
-      matches.slice(0, query ? 20 : 6).forEach(post => {
+      (query ? matches : matches.slice(0, 6)).forEach(post => {
         const link = document.createElement('a');
         link.className = 'search-result';
         link.href = post.url;
         const title = document.createElement('strong');
         title.append(highlighted(post.title, query));
         const meta = document.createElement('small');
-        meta.textContent = `${post.date} · ${post.categories.join(' / ') || '노트'}`;
+        meta.textContent = post.kind === 'category' ? '카테고리' : post.kind === 'page' ? '소개 페이지' : [post.date, post.categories.join(' / ')].filter(Boolean).join(' · ');
         const preview = document.createElement('p');
         const content = post.content.replace(/\s+/gu, ' ');
-        const matchAt = query ? normalize(content).indexOf(normalize(tokens[0])) : 0;
+        const matchAt = query ? findTextMatch(content, tokens[0])?.start || 0 : 0;
         const start = Math.max(0, matchAt - 30);
         preview.append(highlighted((start ? '…' : '') + content.slice(start, start + 110) + (content.length > start + 110 ? '…' : ''), tokens[0] || ''));
         link.append(title, meta, preview);
@@ -114,14 +131,19 @@
       results.append(message);
     }
   }
-  function openSearch() {
+  function openSearch(query) {
+    if (typeof query === 'string') input.value = query;
     if (dialog.open) { input.focus(); input.select(); return; }
     searchReturnFocus = document.activeElement;
     dialog.showModal();
     input.focus();
     search();
   }
-  $$('[data-search-open]').forEach(button => button.addEventListener('click', openSearch));
+  $$('[data-search-open]').forEach(button => button.addEventListener('click', () => openSearch()));
+  headerSearch?.addEventListener('submit', event => {
+    event.preventDefault();
+    openSearch(headerSearchInput.value);
+  });
   $('[data-search-close]').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => {
     if (event.target !== dialog) return;
@@ -129,7 +151,11 @@
     if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
   });
   dialog.addEventListener('close', () => { ++requestNumber; searchReturnFocus?.focus(); });
-  input.addEventListener('input', () => { clearTimeout(debounceTimer); debounceTimer = setTimeout(search, 100); });
+  input.addEventListener('input', () => {
+    if (headerSearchInput) headerSearchInput.value = input.value;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(search, 100);
+  });
   document.addEventListener('keydown', event => {
     const editing = event.target.closest('input, textarea, select, [contenteditable="true"]');
     if ((event.key.toLowerCase() === 'k' && (event.ctrlKey || event.metaKey)) || (event.key === '/' && !editing && !event.ctrlKey && !event.metaKey && !event.altKey)) {
