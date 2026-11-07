@@ -993,6 +993,36 @@ main:focus {
   padding:26px 0;
   border-bottom:1px solid var(--line)
 }
+.post-item.has-thumbnail {
+  --muted:#e2ece9;
+  --faint:#d8e5e3;
+  --accent:#bfe8e1;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding-inline:clamp(16px,3vw,28px);
+  background:#243338;
+  color:#f0f5f3
+}
+.post-item.has-thumbnail h3 {
+  overflow-wrap:anywhere
+}
+.post-item.has-thumbnail::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(90deg,rgb(18 31 36 / 82%),rgb(18 31 36 / 60%))
+}
+.post-item-cover {
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
 .post-item-meta {
   display:flex;
   align-items:center;
